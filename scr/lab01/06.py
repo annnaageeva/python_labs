@@ -8,6 +8,6 @@ for i in range(n):
         offl += 1
     else:
         onl += 1
-
+        
 print(offl, onl)
         
