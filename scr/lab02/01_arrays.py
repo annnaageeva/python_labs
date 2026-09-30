@@ -20,7 +20,7 @@ def flatten(mat):
     res = []
     for row in mat: 
         if not isinstance(row, (list, tuple)):
-            raise TypeError("строка не строка строк матрицы")
+            raise TypeError("строка не является строкой матрицы")
         for numb in row:
             res.append(numb)
     return res
@@ -54,7 +54,7 @@ c4 = [[1, 2], "ab"]
 # print(unique_sorted(b3))
 # print(unique_sorted(b4))
 
-print(flatten(c1))
-print(flatten(c2))
-print(flatten(c3))
-print(flatten(c4))
+# print(flatten(c1))
+# print(flatten(c2))
+# print(flatten(c3))
+# print(flatten(c4))

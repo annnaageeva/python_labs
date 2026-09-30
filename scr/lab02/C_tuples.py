@@ -31,5 +31,5 @@ inf3 = ("  сидорова  анна   сергеевна ", "ABB-01", 3.999)
 inf4 = ("  ПЕТРОВ ПЕТР", "ABB-01", 3.999)
 print(format_record(inf1))
 print(format_record(inf2))
-print(format_record(inf4))
+print(format_record(inf3))
 
