@@ -16,37 +16,21 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from lab04.io_txt_csv import read_text, write_csv
-from lib.text import normalize, tokenize
+from lib.text import normalize, tokenize, count_freq, top_n
 
 
-def frequencies_from_text(text: str) -> Counter[str]:
+def frequencies_from_text(text: str):
     """Нормализовать текст, разбить на токены и посчитать частоты."""
     tokens = tokenize(normalize(text))
-    return Counter(tokens)
-
-
-def sorted_word_counts(freq: dict[str, int]) -> list[tuple[str, int]]:
-    """Отсортировать слова по частоте по убыванию, затем по алфавиту."""
-    return sorted(freq.items(), key=lambda kv: (-kv[1], kv[0]))
-
+    return count_freq(tokens)
 
 def main() -> None:
     """Прочитать входной файл, сохранить CSV и вывести краткую статистику."""
-    parser = argparse.ArgumentParser(
-        description="Подсчёт частот слов в текстовом файле."
-    )
-    parser.add_argument(
-        "--in", dest="input_path", default="data/input.txt",
-        help="путь к входному текстовому файлу (по умолчанию data/input.txt)",
-    )
-    parser.add_argument(
-        "--out", dest="output_path", default="data/report.csv",
-        help="путь к CSV-отчёту (по умолчанию data/report.csv)",
-    )
-    parser.add_argument(
-        "--encoding", default="utf-8",
-        help="кодировка входного файла (по умолчанию utf-8; например cp1251)",
-    )
+
+    parser = argparse.ArgumentParser(description="Подсчёт частот слов в текстовом файле.")
+    parser.add_argument("--in", dest="input_path", default="data/input.txt", help="путь к входному текстовому файлу (по умолчанию data/input.txt)")
+    parser.add_argument("--out", dest="output_path", default="data/report.csv", help="путь к CSV-отчёту (по умолчанию data/report.csv)")
+    parser.add_argument("--encoding", default="utf-8", help="кодировка входного файла (по умолчанию utf-8; например cp1251)")
     args = parser.parse_args()
 
     try:
@@ -55,7 +39,7 @@ def main() -> None:
         parser.error(str(error))
 
     freq = frequencies_from_text(text)
-    sorted_counts = sorted_word_counts(freq)
+    sorted_counts = top_n(freq, 10**10)
 
     output_path = Path(args.output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -65,7 +49,7 @@ def main() -> None:
     print(f"Уникальных слов: {len(freq)}")
     print("Топ-5:")
     for word, count in sorted_counts[:5]:
-        print(f"  {word}: {count}")
+        print(f"{word}: {count}")
 
 if __name__ == "__main__":
     main()
