@@ -84,8 +84,8 @@ data/samples/cities.csv -- data/out/cities.xlsx.
 читается data/lab04/input.txt, а отчёт сохраняется в data/lab04/report.csv.
 
 код второго задания:
-![](./images/lab04/код2.1.png)
-![](./images/lab04/код2.2.png)
+![](./images/lab04/код2.png)
+
 
 ### выводы
 
