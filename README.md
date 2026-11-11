@@ -1,5 +1,74 @@
 # python_labs
 
+# Лабораторная работа 6 — CLI‑утилиты с argparse (cat/grep‑lite + конвертеры): Техническое задание
+
+## модуль cli_text.py
+
+Реализованы две команды:
+cat — выводит содержимое текстового файла в терминал.
+stats — анализирует текст и выводит общее количество слов, количество уникальных слов и наиболее часто встречающиеся слова.
+
+Для анализа текста используются функции из лабораторной № 3: normalize(), tokenize(), count_freq() и top_n().
+
+Примеры запуска:
+python3 -m src.lab06.cli_text --help
+
+python3 -m src.lab06.cli_text cat --input data/samples/people.csv
+
+python3 -m src.lab06.cli_text cat --input data/samples/people.csv -n
+
+## модуль cli_convert.py
+
+Реализованы три команды:
+
+json2csv — преобразование JSON в CSV.
+csv2json — преобразование CSV в JSON.
+csv2xlsx — преобразование CSV в XLSX.
+
+Для преобразования используются функции из лабораторной № 5.
+
+Примеры запуска:
+python3 -m src.lab06.cli_convert json2csv --in data/samples/people.json --out data/out/people.csv
+
+python3 -m src.lab06.cli_convert csv2json --in data/samples/people.csv --out data/out/people.json
+
+python3 -m src.lab06.cli_convert csv2xlsx --in data/samples/people.csv --out data/out/people.xlsx
+
+## Пример работы программ:
+### cli_text.py
+справка
+cat : ![](./images/lab06/cli_text_help.png)
+stats : ![](./images/lab06/cli_text_help2.png)
+
+работа
+cat : ![](./images/lab06/cli_1.png)
+stats : ![](./images/lab06/cli_2.png)
+
+### cli_convert.py
+справка
+![](./images/lab06/convert_help.png)
+
+вывод в терминале
+
+![](./images/lab06/convert_1.png)
+созданные файлы
+
+![](./images/lab06/out1.png)
+![](./images/lab06/out2.png)
+![](./images/lab06/out3.png)
+
+## Ошибки
+
+файл не найден в первом модуле 
+![](./images/lab06/error1.png)
+
+файл не найден во втором модуле 
+![](./images/lab06/error2.png)
+
+неправильный ввод данных
+![](./images/lab06/error3.png)
+
+
 # Лабораторная работа 5 — JSON, CSV и XLSX
 
 - Используется кодировка UTF-8.

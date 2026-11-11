@@ -95,8 +95,6 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
 
         data = list(reader)
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
     with output_path.open("w", encoding="utf-8") as file:
         json.dump(data, file, ensure_ascii=False, indent=2)
 
