@@ -68,7 +68,7 @@ def main() -> None:
                 seconds = measure(fn, nums)
                 display_time = f"{seconds:.6f} с"
             row.append(display_time)
-            rows_csv.append(["sort", n, name, seconds]) 
+            rows_csv.append(["sort", n, name, format_seconds(seconds)])
         sorting_rows.append(row)
 
     print_table(["n", "sorted", "bubble", "selection", "insertion"], sorting_rows)
